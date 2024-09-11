@@ -109,7 +109,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(181, 956);
+            this.button2.Location = new System.Drawing.Point(181, 966);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(178, 48);
             this.button2.TabIndex = 12;
@@ -139,7 +139,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.Location = new System.Drawing.Point(44, 956);
+            this.button3.Location = new System.Drawing.Point(44, 966);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(131, 48);
             this.button3.TabIndex = 11;
@@ -306,7 +306,7 @@
             this.button8.BackColor = System.Drawing.SystemColors.Control;
             this.button8.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button8.Location = new System.Drawing.Point(1534, 26);
+            this.button8.Location = new System.Drawing.Point(1540, 27);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(40, 40);
             this.button8.TabIndex = 14;
@@ -319,7 +319,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1776, 1570);
+            this.ClientSize = new System.Drawing.Size(1604, 1056);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.groupBox2);
@@ -332,7 +332,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1798, 1526);
+            this.MinimumSize = new System.Drawing.Size(1626, 1112);
             this.Name = "Form1";
             this.Text = "RSOC Image Editor";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);

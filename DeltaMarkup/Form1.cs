@@ -17,7 +17,6 @@ using System.Globalization;
 namespace DeltaMarkup
 {
     
-
     public partial class Form1 : Form
     {
         public string timestamp;
@@ -34,16 +33,14 @@ namespace DeltaMarkup
         private bool isDrawing = false;
         private Point startPoint;
         private Point endPoint;
-        //private Rectangle currentRect;
+       
         private Shape.ShapeType shapeType = Shape.ShapeType.Rectangle; // Rectangle by default
         private Color fillColor = Color.Transparent; // Default fill color
         private Color selectedColor = Color.Black; // Default color
 
-        //private List<(Rectangle rect, Color color)> rectangles = new List<(Rectangle, Color)>();
 
         // List to store shapes
         private List<Shape> shapes = new List<Shape>();
-        //private Shape currentShape;
 
         public Form1()
         {
@@ -145,7 +142,7 @@ namespace DeltaMarkup
             {
                 label1.Text = description;
             }
-            //this.Invalidate(); // Trigger a repaint to update the border 
+         
         }
 
         private void maskedTextBox1_TextChanged(object sender, EventArgs e)
@@ -155,7 +152,7 @@ namespace DeltaMarkup
             if (checkBox1.Checked == true) // only include timestamp if checkbox is checked
             {
                 label1.Text = timestamp + " – " + description;
-                //this.Invalidate(); // Trigger a repaint to update the border
+                
             }
             
             
@@ -282,7 +279,7 @@ namespace DeltaMarkup
                 isDrawing = true;
                 startPoint = e.Location;
                 endPoint = startPoint;
-                //currentRect = new Rectangle();
+               
             }
         }
 
@@ -318,15 +315,8 @@ namespace DeltaMarkup
             {
                 pictureBox2.Cursor = Cursors.Cross;
 
-                // Update the current rectangle dimensions
-                //int x = Math.Min(startPoint.X, e.X);
-                //int y = Math.Min(startPoint.Y, e.Y);
-                //int width = Math.Abs(startPoint.X - e.X);
-                //int height = Math.Abs(startPoint.Y - e.Y);
-
                 endPoint = e.Location;
-                //currentRect = new Rectangle(x, y, width, height);
-                //currentShape = new Shape(Shape.ShapeType.Rectangle, startPoint, endPoint, selectedColor, fillColor);
+                
                 pictureBox2.Invalidate(); // Trigger a repaint to update the drawing
             }
             else
@@ -384,9 +374,12 @@ namespace DeltaMarkup
 
         private void UpdateShapePoints()
         {
-            // Calculate scaling factors
+            // Calculate the scaling factor based on width or height (whichever is limiting)
             float scaleX = (float)pictureBox2.Width / originalWidth;
             float scaleY = (float)pictureBox2.Height / originalHeight;
+
+            // Use the smaller scaling factor to maintain aspect ratio
+            float scaleFactor = Math.Min(scaleX, scaleY);
 
             // Update the start and end points of each shape
             for (int i = 0; i < shapes.Count; i++)
@@ -395,14 +388,14 @@ namespace DeltaMarkup
 
                 // Update the start point
                 Point newStartPoint = new Point(
-                    (int)(shape.StartPoint.X * scaleX),
-                    (int)(shape.StartPoint.Y * scaleY)
+                    (int)(shape.StartPoint.X * scaleFactor),
+                    (int)(shape.StartPoint.Y * scaleFactor)
                 );
 
                 // Update the end point
                 Point newEndPoint = new Point(
-                    (int)(shape.EndPoint.X * scaleX),
-                    (int)(shape.EndPoint.Y * scaleY)
+                    (int)(shape.EndPoint.X * scaleFactor),
+                    (int)(shape.EndPoint.Y * scaleFactor)
                 );
 
                 // Replace the shape with the updated points
@@ -416,6 +409,7 @@ namespace DeltaMarkup
             // Invalidate the PictureBox to redraw all shapes with updated positions
             pictureBox2.Invalidate();
         }
+
 
 
         private void pictureBox2_Paint(object sender, PaintEventArgs e)
